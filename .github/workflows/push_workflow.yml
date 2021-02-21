@@ -114,8 +114,8 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp@cofferhub.tk
-          username: ftp@cofferhub.tk
+          server: cofferhub.tk
+          username: coffer_root@cofferhub.tk
           password: ${{ secrets.FTP_PASSWORD }}
           exclude: .git*
             - .git*/**
