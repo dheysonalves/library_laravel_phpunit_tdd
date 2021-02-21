@@ -98,24 +98,19 @@ jobs:
     needs: [build-js-staging, app-tests]
     if: github.ref == 'refs/heads/develop'
     steps:
-      - name: 🚚 Get latest code
       - uses: actions/checkout@v2.3.2
-      
       - name: Fetch built assets from Artifacts
         uses: actions/download-artifact@v1
         with:
           name: assets
           path: public
-          
       - name: Setup PHP
         uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
           extension-csv: mbstring, bcmath
-          
       - name: Composer install
         run: composer install
-        
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
