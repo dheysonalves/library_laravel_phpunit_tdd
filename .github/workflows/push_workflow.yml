@@ -14,7 +14,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: test_db
+          MYSQL_DATABASE: library_tdd_database
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -23,7 +23,7 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Composer Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        run: composer install
       - name: Install NPM Dependencies
         run: npm install
       - name: Generate Key
@@ -32,8 +32,6 @@ jobs:
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: vendor/bin/phpunit
-      - name: Execute tests (Unit and Feature tests) via JEST
-        run: node_modules/.bin/jest
   build-js-production:
     name: Build JavaScript/CSS for PRODUCTION Server
     runs-on: ubuntu-latest
@@ -84,7 +82,7 @@ jobs:
           php-version: 7.4
           extension-csv: mbstring, bcmath
       - name: Composer install
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        run: composer install
       - name: Setup Deployer
         uses: atymic/deployer-php-action@master
         with:
@@ -112,7 +110,7 @@ jobs:
           php-version: 7.4
           extension-csv: mbstring, bcmath
       - name: Composer install
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        run: composer install
       - name: Setup Deployer
         uses: atymic/deployer-php-action@master
         with:
