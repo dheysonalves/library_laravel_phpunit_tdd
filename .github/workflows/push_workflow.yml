@@ -115,6 +115,5 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: cofferhub.tk
-          port: 22
-          username: coffer_root@cofferhub.tk
+          username: ftp@cofferhub.tk
           password: ${{ secrets.FTP_PASSWORD }}
