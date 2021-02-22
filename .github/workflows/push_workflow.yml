@@ -89,7 +89,7 @@ jobs:
           server: cofferhub.tk
           username: coffer_root@cofferhub.tk
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: cofferhub.tk/coffer_root/laraveltdd.cofferhub.tk/
+          server-dir: laraveltdd.cofferhub.tk/
           exclude: .git*
             - .git*/**
             -  **/.git*/**
@@ -122,7 +122,7 @@ jobs:
           server: cofferhub.tk
           username: coffer_root@cofferhub.tk
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: cofferhub.tk/coffer_root/hml-laraveltdd.cofferhub.tk/
+          server-dir: hml-laraveltdd.cofferhub.tk/
           exclude: .git*
             - .git*/**
             -  **/.git*/**
