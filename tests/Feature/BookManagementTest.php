@@ -8,7 +8,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Session;
 
-class BookReservationTest extends TestCase
+class BookManagementTest extends TestCase
 {
     // Refresh the database with migrations
     use RefreshDatabase;
@@ -36,6 +36,7 @@ class BookReservationTest extends TestCase
 
         $response->assertSessionHasErrors('title');
     }
+
     /** @test */
     public function a_author_is_required()
     {
@@ -59,7 +60,7 @@ class BookReservationTest extends TestCase
         ]);
 
         $this->assertEquals('New Title', Book::first()->title);
-        $this->assertEquals(5, Book::first()->author_id);
+        $this->assertEquals(9, Book::first()->author_id);
         $response->assertRedirect($book->fresh()->path());
 
     }
