@@ -15,6 +15,8 @@ class BookReservationsTest extends TestCase
     /** @test */
     public function a_book_can_be_checked_out()
     {
+        $this->withExceptionHandling();
+
         $book = Book::factory()->create();
         $user = User::factory()->create();
 
@@ -30,6 +32,8 @@ class BookReservationsTest extends TestCase
     /** @test */
     public function a_book_can_be_returned()
     {
+        $this->withExceptionHandling();
+
         $book = Book::factory()->create();
         $user = User::factory()->create();
 
